@@ -26,8 +26,8 @@ function reloadTask(done) {
 }
 
 function jsTask(done) {
-    src('scripts-source/scripts.js')
-        .pipe(dest('build/scripts'))
+    src('src/js/script.js')
+        .pipe(dest('build/js'))
         .pipe(connect.reload());
     done();
 }
@@ -56,7 +56,7 @@ function concatCssTask() {
 
 function watchTask() {
     watch(['src/style/*.scss'], cssTask);
-    // gulp.watch('scripts-source/!*.js', ['js']);
+    watch('src/js/*.js', jsTask);
     // gulp.watch('build/img/!*.*', ['reload']);
     // gulp.watch('build/fonts/!*.*', ['reload']);
     watch(['src/views/index.html'], reloadTask);
@@ -64,4 +64,4 @@ function watchTask() {
 }
 
 exports.style = cssTask;
-exports.default = parallel(connectTask, reloadTask, cssTask, watchTask);
+exports.default = parallel(connectTask, reloadTask, cssTask, jsTask, watchTask);

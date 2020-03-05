@@ -12,6 +12,10 @@ $color-border-input: #453822;
 $color-bg-input: #191514;
 $color-placeholder-input: #a4a4a4;
 
+$input-height: 52px;
+
+@import "select";
+
 %pseudo-hover {
   content: '';
   position: absolute;
@@ -35,15 +39,36 @@ $color-placeholder-input: #a4a4a4;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
+}
+
+.paymodal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 30px;
+  overflow-y: scroll;
+
+  &--hidden {
+    pointer-events: none;
+  }
 }
 
 .paymodal {
   position: relative;
   display: flex;
   margin: auto;
+  transition: none .3s;
+  transition-property: opacity, transform;
+
+  &--closed {
+    //pointer-events: none;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 
   &__form {
     display: flex;
@@ -125,7 +150,8 @@ body {
 
 .paymodal-input {
   border: 1px solid $color-border-input;
-  padding: 16px 18px;
+  height: $input-height;
+  padding: 0 18px;
   font-family: Intro-Book, sans-serif;
   line-height: 1;
   color: white;
@@ -136,8 +162,7 @@ body {
   }
 
   &--low {
-    padding-top: 10px;
-    padding-bottom: 9px;
+    height: 40px;
   }
 }
 

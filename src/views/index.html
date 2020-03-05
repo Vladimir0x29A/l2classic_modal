@@ -9,96 +9,108 @@
 </head>
 
 <body>
-<div class="paymodal">
-    <div class="paymodal__form">
-        <div class="paymodal__block paymodal-bg-1">
-            <div class="paymodal-label">Filling up the balance</div>
-            <div class="horizontal-input-block">
-                <input class="paymodal-filling__input paymodal-input" type="text" value="100">
-                <span class="horizontal-input-block__el paymodal-info">
+<button id="show" class="paymodal-simple-button">button</button>
+<div class="paymodal-overlay">
+    <div class="paymodal">
+        <div class="paymodal__form">
+            <div class="paymodal__block paymodal-bg-1">
+                <div class="paymodal-label">Filling up the balance</div>
+                <div class="horizontal-input-block">
+                    <input class="paymodal-filling__input paymodal-input" type="text" value="100">
+                    <span class="horizontal-input-block__el paymodal-info">
                     <span class="paymodal-info__accented">+2.00</span>
                     Euro bonus
                 </span>
+                </div>
             </div>
-        </div>
-        <div class="paymodal__block paymodal__block--grown paymodal-methods">
-            <div class="paymodal-methods__block paymodal-methods__block--pushed-off">
-                <div class="paymodal-label">Select one of available payment methods</div>
-                <div class="paymodal-methods__columner columner-paymethods">
-                    <div class="paymodal-methods__method columner-paymethods__item payment-item">
-                        <div class="payment-item__content">
-                            <svg class="payment-item__ok" width="70" height="53" viewBox="0 0 70 53">
-                                <path d="M70 7L24 53 0 29l7-7 17 17L63 0z"/>
-                            </svg>
-                            <img class="payment-item__currency-img" src="/img/currency-mastercard.png" alt="">
+            <div class="paymodal__block paymodal__block--grown paymodal-methods">
+                <div class="paymodal-methods__block paymodal-methods__block--pushed-off">
+                    <div class="paymodal-label">Select one of available payment methods</div>
+                    <div class="paymodal-methods__columner columner-paymethods">
+                        <div class="paymodal-methods__method columner-paymethods__item payment-item">
+                            <div class="payment-item__content">
+                                <svg class="payment-item__ok" width="70" height="53" viewBox="0 0 70 53">
+                                    <path d="M70 7L24 53 0 29l7-7 17 17L63 0z"/>
+                                </svg>
+                                <img class="payment-item__currency-img" src="/img/currency-mastercard.png" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="paymodal-methods__method columner-paymethods__item payment-item payment-item--active">
-                        <div class="payment-item__content">
-                            <svg class="payment-item__ok" width="70" height="53" viewBox="0 0 70 53">
-                                <path d="M70 7L24 53 0 29l7-7 17 17L63 0z"/>
-                            </svg>
-                            <img class="payment-item__currency-img" src="/img/currency-g2a.png" alt="">
+                        <div class="paymodal-methods__method columner-paymethods__item payment-item payment-item--active">
+                            <div class="payment-item__content">
+                                <svg class="payment-item__ok" width="70" height="53" viewBox="0 0 70 53">
+                                    <path d="M70 7L24 53 0 29l7-7 17 17L63 0z"/>
+                                </svg>
+                                <img class="payment-item__currency-img" src="/img/currency-g2a.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="paymodal-methods__block">
+                    <div class="paymodal-label">Choose one method</div>
+                    <div class="horizontal-input-block">
+                        <div>
+                            <select class="nice-select paymodal-select" name="paymethod">
+                                <option value="paymethod_oplatainfo">Oplata.info</option>
+                                <option value="paymethod_nextpay">NextPay</option>
+                            </select>
+                        </div>
+                        <span class="horizontal-input-block__el paymodal-info">
+                            <span class="paymodal-info__accented">$20</span>
+                            = BTC 0.002069720
+                        </span>
+                    </div>
+                </div>
+                <div class="paymodal-methods__block">
+                    <div class="paymodal-label">Generated QR-code</div>
+                    <div class="paymodal-qr">
+                        <img class="paymodal-qr__img" src="/img/payment-modal-qr.png" alt="">
+                        <div class="paymodal-qr__info">
+                            <div class="paymodal-qr__price">存款金额：159.95 ¥</div>
+                            <div class="paymodal-qr__timer">1:57</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="paymodal-methods__block">
+                    <div class="paymodal-label">Your phone number</div>
+                    <div class="horizontal-input-block horizontal-input-block--stretch">
+                        <input class="paymodal-input" type="text" value="+8617069622940">
+                        <button class="horizontal-input-block__el paymodal-simple-button">
+                            <span class="paymodal-simple-button__span">Enter</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="paymodal-methods__block">
-                <div class="paymodal-label">Choose one method</div>
+            <div class="paymodal__block paymodal-bg-1">
+                <div class="paymodal-label">Use promotional code</div>
                 <div class="horizontal-input-block">
-                    <input class="paymodal-input" type="text" value="+8617069622940">
-                    <span class="horizontal-input-block__el paymodal-info">
-                        <span class="paymodal-info__accented">$20</span>
-                        = BTC 0.002069720
-                    </span>
-                </div>
-            </div>
-            <!--<div class="paymodal-methods__block">
-                <div class="paymodal-label">Generated QR-code</div>
-                <div class="paymodal-qr">
-                    <img class="paymodal-qr__img" src="/img/payment-modal-qr.png" alt="">
-                    <div class="paymodal-qr__info">
-                        <div class="paymodal-qr__price">存款金额：159.95 ¥</div>
-                        <div class="paymodal-qr__timer">1:57</div>
+                    <div class="input-with-button">
+                        <input class="paymodal-promo-content__input paymodal-input paymodal-input--low input-with-button__pad" type="text" placeholder="Enter promo code">
+                        <button class="horizontal-input-block__el paymodal-bordered-button input-with-button__abs">
+                            <span class="paymodal-bordered-button__span">Enter</span>
+                        </button>
                     </div>
-                </div>
-            </div>-->
-            <div class="paymodal-methods__block">
-                <div class="paymodal-label">Your phone number</div>
-                <div class="horizontal-input-block horizontal-input-block--stretch">
-                    <input class="paymodal-input" type="text" value="+8617069622940">
-                    <button class="horizontal-input-block__el paymodal-simple-button">
-                        <span class="paymodal-simple-button__span">Enter</span>
-                    </button>
+                    <button class="horizontal-input-block__el paymodal-stylized-button">Pay</button>
                 </div>
             </div>
         </div>
-        <div class="paymodal__block paymodal-bg-1">
-            <div class="paymodal-label">Use promotional code</div>
-            <div class="horizontal-input-block">
-                <div class="input-with-button">
-                    <input class="paymodal-promo-content__input paymodal-input paymodal-input--low input-with-button__pad" type="text" placeholder="Enter promo code">
-                    <button class="horizontal-input-block__el paymodal-bordered-button input-with-button__abs">
-                        <span class="paymodal-bordered-button__span">Enter</span>
-                    </button>
-                </div>
-                <button class="horizontal-input-block__el paymodal-stylized-button">Pay</button>
+        <div class="paymodal__block paymodal__faq paymodal-faq">
+            <img class="paymodal-faq__logo" src="/img/payment-modal-logo.png" alt="">
+            <div class="paymodal-faq__title paymodal-label">FAQ</div>
+            <div class="paymodal-faq__content">
+                <div class="paymodal-faq__paragraph">Exchange <span class="paymodal-faq__accented">1 Euro = 10 Coins</span> of Luck.</div>
+                <div class="paymodal-faq__subtitle">使用前必读：</div>
+                <div class="paymodal-faq__paragraph paymodal-faq__paragraph--marked">打开手机“微信支付”扫一扫。</div>
+                <div class="paymodal-faq__paragraph paymodal-faq__paragraph--marked">确认付款。</div>
+                <div class="paymodal-faq__paragraph paymodal-faq__paragraph--marked">如果您在付款时遇到任何问题，<br>请尝试更改金额。尝试再次创建二<br>维码或尝试其他付款方式。</div>
+                <div class="paymodal-faq__bottom">注意！请确保您发送的金额正确。<br>如有任何问题，请联系支持。<br>二维码的有效时间为2分钟，<br>超过2分钟就会失效。</div>
             </div>
         </div>
+        <div class="paymodal__close paymodal-close"></div>
     </div>
-    <div class="paymodal__block paymodal__faq paymodal-faq">
-        <img class="paymodal-faq__logo" src="/img/payment-modal-logo.png" alt="">
-        <div class="paymodal-faq__title paymodal-label">FAQ</div>
-        <div class="paymodal-faq__content">
-            <div class="paymodal-faq__paragraph">Exchange <span class="paymodal-faq__accented">1 Euro = 10 Coins</span> of Luck.</div>
-            <div class="paymodal-faq__subtitle">使用前必读：</div>
-            <div class="paymodal-faq__paragraph paymodal-faq__paragraph--marked">打开手机“微信支付”扫一扫。</div>
-            <div class="paymodal-faq__paragraph paymodal-faq__paragraph--marked">确认付款。</div>
-            <div class="paymodal-faq__paragraph paymodal-faq__paragraph--marked">如果您在付款时遇到任何问题，<br>请尝试更改金额。尝试再次创建二<br>维码或尝试其他付款方式。</div>
-            <div class="paymodal-faq__bottom">注意！请确保您发送的金额正确。<br>如有任何问题，请联系支持。<br>二维码的有效时间为2分钟，<br>超过2分钟就会失效。</div>
-        </div>
-    </div>
-    <div class="paymodal__close paymodal-close"></div>
 </div>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>
