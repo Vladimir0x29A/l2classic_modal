@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body class="black-friday">
+<body>
 <div class="paymodal">
     <div class="paymodal__form">
-        <div class="paymodal__block paymodal-filling">
+        <div class="paymodal__block paymodal-bg-1">
             <div class="paymodal-label">Filling up the balance</div>
-            <div class="paymodal-filling__content paymodal-filling-content">
-                <input class="paymodal-filling-content__input paymodal-input" type="text" value="100">
-                <span class="paymodal-filling-content__label">
-                    <span class="paymodal-filling-content__accented">+2.00</span>
+            <div class="horizontal-input-block">
+                <input class="paymodal-filling__input paymodal-input" type="text" value="100">
+                <span class="horizontal-input-block__el paymodal-info">
+                    <span class="paymodal-info__accented">+2.00</span>
                     Euro bonus
                 </span>
             </div>
         </div>
-        <div class="paymodal__block paymodal-methods">
-            <div class="paymodal-methods__block">
+        <div class="paymodal__block paymodal__block--grown paymodal-methods">
+            <div class="paymodal-methods__block paymodal-methods__block--pushed-off">
                 <div class="paymodal-label">Select one of available payment methods</div>
                 <div class="paymodal-methods__columner columner-paymethods">
                     <div class="paymodal-methods__method columner-paymethods__item payment-item">
@@ -45,19 +45,27 @@
             </div>
             <div class="paymodal-methods__block">
                 <div class="paymodal-label">Choose one method</div>
+                <div class="horizontal-input-block">
+                    <input class="paymodal-input" type="text" value="+8617069622940">
+                    <span class="horizontal-input-block__el paymodal-info">
+                        <span class="paymodal-info__accented">$20</span>
+                        = BTC 0.002069720
+                    </span>
+                </div>
             </div>
-            <div class="paymodal-methods__block">
+            <!--<div class="paymodal-methods__block">
                 <div class="paymodal-label">Generated QR-code</div>
                 <div class="paymodal-qr">
                     <img class="paymodal-qr__img" src="/img/payment-modal-qr.png" alt="">
                     <div class="paymodal-qr__info">
-
+                        <div class="paymodal-qr__price">存款金额：159.95 ¥</div>
+                        <div class="paymodal-qr__timer">1:57</div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="paymodal-methods__block">
                 <div class="paymodal-label">Your phone number</div>
-                <div class="horizontal-input-block">
+                <div class="horizontal-input-block horizontal-input-block--stretch">
                     <input class="paymodal-input" type="text" value="+8617069622940">
                     <button class="horizontal-input-block__el paymodal-simple-button">
                         <span class="paymodal-simple-button__span">Enter</span>
@@ -65,9 +73,9 @@
                 </div>
             </div>
         </div>
-        <div class="paymodal__block paymodal-promo">
+        <div class="paymodal__block paymodal-bg-1">
             <div class="paymodal-label">Use promotional code</div>
-            <div class="horizontal-input-block paymodal-promo__content paymodal-promo-content">
+            <div class="horizontal-input-block">
                 <div class="input-with-button">
                     <input class="paymodal-promo-content__input paymodal-input paymodal-input--low input-with-button__pad" type="text" placeholder="Enter promo code">
                     <button class="horizontal-input-block__el paymodal-bordered-button input-with-button__abs">

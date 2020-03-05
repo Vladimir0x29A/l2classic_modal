@@ -46,12 +46,18 @@ body {
   margin: auto;
 
   &__form {
+    display: flex;
+    flex-direction: column;
     max-width: 670px;
     background: $color-bg-1;
   }
 
   &__block {
     padding: 30px 27px;
+
+    &--grown {
+      flex-grow: 1;
+    }
   }
 
   &__faq {
@@ -107,9 +113,19 @@ body {
   }
 }
 
+.paymodal-info {
+  font-size: 18px;
+  font-family: Intro-Book, sans-serif;
+  color: white;
+
+  &__accented {
+    color: $color-yellow-pale;
+  }
+}
+
 .paymodal-input {
   border: 1px solid $color-border-input;
-  padding: 15px 18px;
+  padding: 16px 18px;
   font-family: Intro-Book, sans-serif;
   line-height: 1;
   color: white;
@@ -225,6 +241,11 @@ body {
 
 .horizontal-input-block {
   display: flex;
+  align-items: center;
+
+  &--stretch {
+    align-items: stretch;
+  }
 
   &__el {
     &:not(:first-child) {
@@ -248,40 +269,23 @@ body {
   }
 }
 
-.paymodal-filling {
+.paymodal-bg-1 {
   background: $color-bg-1;
-
-  &__content {
-    //margin-top: 16px;
-  }
-}
-
-.paymodal-filling-content {
-  display: flex;
-  align-items: center;
-
-  &__input {
-
-  }
-
-  &__label {
-    margin-left: 20px;
-    font-family: Intro-Book, sans-serif;
-    color: white;
-  }
-
-  &__accented {
-    color: $color-yellow-pale;
-  }
 }
 
 .paymodal-methods {
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid $color-form-border;
   background: $color-bg-2;
 
   &__block {
     &:not(:first-child) {
       margin-top: 30px;
+    }
+
+    &--pushed-off {
+      margin-bottom: auto;
     }
   }
 
@@ -308,7 +312,6 @@ body {
     width: 92px;
     margin-left: $margin-h;
     margin-top: $margin-v;
-    //background: #2ee631;
   }
 }
 
@@ -321,14 +324,11 @@ body {
   &::before,
   &::after {
     @extend %pseudo-hover;
-  }
-
-  &::before {
-    background: linear-gradient(131deg, #4d413e, #332c2b);
+    background: linear-gradient(131deg, #1f951c, #074d14);
   }
 
   &::after {
-    background: linear-gradient(131deg, #1f951c, #074d14);
+    box-shadow: 0 0 11px cca(#1c8e1c, .7);
   }
 
   &:hover {
@@ -397,23 +397,6 @@ body {
   }
 }
 
-.paymodal-promo {
-  background: $color-bg-1;
-
-  &__content {
-    //margin-top: 16px;
-  }
-}
-
-.paymodal-promo-content {
-  display: flex;
-  align-items: center;
-
-  &__input {
-
-  }
-}
-
 .paymodal-faq {
   max-width: 400px;
   background: $color-bg-3 url("/img/payment-modal-bg.png") center;
@@ -478,5 +461,22 @@ body {
 
   &__img {
     max-width: 124px;
+  }
+
+  &__info {
+    margin-left: 40px;
+    font-family: Intro-Book, sans-serif;
+    line-height: 1;
+  }
+
+  &__price {
+    font-size: 20px;
+    color: white;
+  }
+
+  &__timer {
+    margin-top: 16px;
+    font-size: 30px;
+    color: $color-yellow-pale;
   }
 }
