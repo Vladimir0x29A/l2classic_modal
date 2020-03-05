@@ -1,0 +1,560 @@
+@import "reset";
+
+$color-bg-1: #2e2929;
+$color-bg-2: #211e1e;
+$color-bg-3: #1c1919;
+$color-form-border: #aa8a55;
+$color-yellow-pale: #d0ab6f;
+
+$color-border-input: #453822;
+$color-bg-input: #191514;
+$color-placeholder-input: #a4a4a4;
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin width_col($item_count, $margin) {
+  @if $margin == 0 {
+    width: floor(10000% / $item_count) / 100;
+  } @else {
+    width: calc(#{floor(10000% / $item_count) / 100} - #{$margin * 2});
+  }
+}
+
+@mixin fluid($property, $maxScreen, $minScreen, $maxValue, $minValue, $flag_before: true, $flag_after: true) {
+  @if $flag_before == true {
+    #{$property}: $maxValue;
+  }
+  @media screen and (max-width: $maxScreen) {
+    $m: ($maxValue - $minValue) / ($maxScreen - $minScreen);
+    $b: round($minValue - $m * $minScreen);
+    $temp: round($m * 100vw * 100) / 100;
+    @if $b < 0 {
+      #{$property}: calc(#{$temp} - #{abs($b)});
+    }
+    @else if $b > 0 {
+      #{$property}: calc(#{$temp} + #{$b});
+    }
+    @else if $b == 0 {
+      #{$property}: $temp;
+    }
+  }
+  @if $flag_after == true {
+    @media screen and (max-width: $minScreen) {
+      #{$property}: $minValue;
+    }
+  }
+}
+
+@function cca($color, $alpha) {
+  @return change_color($color, $alpha: $alpha);
+}
+
+@font-face {
+  font-family: Intro-Book;
+  src: url(/fonts/Intro/Intro-Book.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Intro-Book-Italic;
+  src: url(/fonts/Intro/Intro-Book-Italic.otf);
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: TCAdministerRR-Bold;
+  src: url(/fonts/Administer/TCAdministerRR-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: AdobeHeitiStd;
+  src: url(/fonts/AdobeHeitiStd-Regular.otf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+%pseudo-hover {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+%pseudo-hover-minus {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.paymodal {
+  position: relative;
+  display: flex;
+  margin: auto;
+
+  &__form {
+    max-width: 670px;
+    background: $color-bg-1;
+  }
+
+  &__block {
+    padding: 30px 27px;
+  }
+
+  &__faq {
+
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.paymodal-close {
+  width: 30px;
+  height: 30px;
+  border: 2px solid $color-form-border;
+  border-radius: 50%;
+  filter: brightness(3);
+  transition: filter .2s;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 2px;
+    width: 70%;
+    border-radius: 2px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: $color-form-border;
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    filter: none;
+  }
+}
+
+.paymodal-label {
+  font-size: 20px;
+  font-family: TCAdministerRR-Bold, serif;
+  font-weight: 700;
+  color: $color-yellow-pale;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.paymodal-input {
+  border: 1px solid $color-border-input;
+  padding: 15px 18px;
+  font-family: Intro-Book, sans-serif;
+  line-height: 1;
+  color: white;
+  background: $color-bg-input;
+
+  @include placeholder {
+    color: $color-placeholder-input;
+  }
+
+  &--low {
+    padding-top: 10px;
+    padding-bottom: 9px;
+  }
+}
+
+.paymodal-simple-button {
+  position: relative;
+  padding: 12px 20px;
+  min-width: 100px;
+  font-size: 18px;
+  line-height: 1;
+  font-family: Intro-Book, sans-serif;
+  color: white;
+  background: $color-yellow-pale;
+  cursor: pointer;
+
+  &__span {
+    position: relative;
+  }
+
+  &::before {
+    @extend %pseudo-hover;
+    background: #d07e35;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.paymodal-bordered-button {
+  position: relative;
+  border: 1px solid $color-yellow-pale;
+  padding: 6px 20px;
+  min-width: 92px;
+  font-size: 18px;
+  line-height: 1;
+  font-family: Intro-Book, sans-serif;
+  color: $color-yellow-pale;
+  cursor: pointer;
+
+  &__span {
+    position: relative;
+  }
+
+  &::before {
+    @extend %pseudo-hover-minus;
+    border: 1px solid #d07e35;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+
+    .paymodal-bordered-button {
+      &__span {
+        filter: saturate(1.7);
+      }
+    }
+  }
+}
+
+.paymodal-stylized-button {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 168px;
+  height: 44px;
+  font-size: 20px;
+  font-family: Intro-Book, sans-serif;
+  color: white;
+  text-shadow: 0 2px 2px cca(black, .5);
+  background: url(/img/btn-s.png) bottom no-repeat;
+  cursor: pointer;
+
+  &::before {
+    @extend %pseudo-hover;
+    box-shadow: 0 0 10px #eab603;
+  }
+
+  /*&::after {
+    @extend %pseudo-hover;
+    z-index: -1;
+    opacity: 1;
+    background: url(/img/btn-s.png) bottom no-repeat;
+  }*/
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+
+    /*&::after {
+      opacity: 0;
+    }*/
+  }
+}
+
+.horizontal-input-block {
+  display: flex;
+
+  &__el {
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+}
+
+.input-with-button {
+  position: relative;
+
+  &__pad {
+    padding-right: 100px;
+  }
+
+  &__abs {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+  }
+}
+
+.paymodal-filling {
+  background: $color-bg-1;
+
+  &__content {
+    //margin-top: 16px;
+  }
+}
+
+.paymodal-filling-content {
+  display: flex;
+  align-items: center;
+
+  &__input {
+
+  }
+
+  &__label {
+    margin-left: 20px;
+    font-family: Intro-Book, sans-serif;
+    color: white;
+  }
+
+  &__accented {
+    color: $color-yellow-pale;
+  }
+}
+
+.paymodal-methods {
+  border-bottom: 1px solid $color-form-border;
+  background: $color-bg-2;
+
+  &__block {
+    &:not(:first-child) {
+      margin-top: 30px;
+    }
+  }
+
+  &__columner {
+    //margin-top: 16px;
+  }
+
+  &__method {
+    height: 117px;
+  }
+}
+
+.columner-paymethods {
+  $margin-v: 14px;
+  $margin-h: 17px;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$margin-h;
+  margin-top: -$margin-v;
+
+  &__item {
+    //@include width_col(5, $margin-h);
+    width: 92px;
+    margin-left: $margin-h;
+    margin-top: $margin-v;
+    //background: #2ee631;
+  }
+}
+
+.payment-item {
+  position: relative;
+  padding: 2px;
+  background: linear-gradient(131deg, #332b29, #241f1e);
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    @extend %pseudo-hover;
+  }
+
+  &::before {
+    background: linear-gradient(131deg, #4d413e, #332c2b);
+  }
+
+  &::after {
+    background: linear-gradient(131deg, #1f951c, #074d14);
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &--active {
+    &::before {
+      opacity: 0;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+
+    .payment-item {
+      &__content {
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      &__ok {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 100%;
+    padding: 17px;
+    background: $color-bg-3;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: radial-gradient(circle farthest-side at 64% 90%, #27413a, #1e2c21);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  }
+
+  &__ok {
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    opacity: 0;
+    transition: opacity .2s;
+    fill: #29453d;
+  }
+
+  &__currency-img {
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+.paymodal-promo {
+  background: $color-bg-1;
+
+  &__content {
+    //margin-top: 16px;
+  }
+}
+
+.paymodal-promo-content {
+  display: flex;
+  align-items: center;
+
+  &__input {
+
+  }
+}
+
+.paymodal-faq {
+  max-width: 400px;
+  background: $color-bg-3 url("/img/payment-modal-bg.png") center;
+
+  &__logo {
+    display: block;
+    max-width: 150px;
+    padding-right: 36px;
+    box-sizing: content-box;
+    margin: 0 auto 30px;
+  }
+
+  &__title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__content {
+    font-size: 20px;
+    font-family: Intro-Book, sans-serif;
+    line-height: 1.4;
+    color: white;
+  }
+
+  &__accented {
+    color: $color-yellow-pale;
+  }
+
+  &__subtitle {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: $color-yellow-pale;
+  }
+
+  &__paragraph {
+    &--marked {
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 13px;
+        left: 2px;
+        width: 5px;
+        height: 5px;
+        border: 2px solid $color-yellow-pale;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 40px;
+    text-align: center;
+  }
+}
+
+.paymodal-qr {
+  display: flex;
+
+  &__img {
+    max-width: 124px;
+  }
+}
