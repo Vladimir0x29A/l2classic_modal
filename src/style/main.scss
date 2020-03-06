@@ -13,6 +13,15 @@ $color-bg-input: #191514;
 $color-placeholder-input: #a4a4a4;
 
 $input-height: 52px;
+$input-height-2: 36px;
+$input-pad: 14px;
+$input-pad-2: 12px;
+
+$break-faq: 900px;
+$break-payment-item: 660px;
+$break-payment-item-2: 540px;
+$break-payment-item-3: 400px;
+$break-payment-item-4: 320px;
 
 @import "select";
 
@@ -52,6 +61,14 @@ body {
   padding: 30px;
   overflow-y: scroll;
 
+  @media screen and (max-width: 600px) {
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 12px;
+  }
+
   &--hidden {
     pointer-events: none;
   }
@@ -64,6 +81,10 @@ body {
   transition: none .3s;
   transition-property: opacity, transform;
 
+  @media screen and (max-width: $break-faq) {
+    flex-direction: column;
+  }
+
   &--closed {
     //pointer-events: none;
     opacity: 0;
@@ -75,10 +96,22 @@ body {
     flex-direction: column;
     max-width: 670px;
     background: $color-bg-1;
+
+    @media screen and (max-width: $break-faq) {
+      max-width: none;
+    }
   }
 
   &__block {
     padding: 30px 27px;
+
+    @media screen and (max-width: 600px) {
+      padding: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+      padding: 12px;
+    }
 
     &--grown {
       flex-grow: 1;
@@ -93,6 +126,11 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
+
+    @media screen and (max-width: 500px) {
+      top: 8px;
+      right: 8px;
+    }
   }
 }
 
@@ -133,8 +171,16 @@ body {
   font-weight: 700;
   color: $color-yellow-pale;
 
+  @media screen and (max-width: 600px) {
+    font-size: 18px;
+  }
+
   &:not(:last-child) {
     margin-bottom: 16px;
+
+    @media screen and (max-width: 600px) {
+      margin-bottom: 12px;
+    }
   }
 }
 
@@ -143,6 +189,10 @@ body {
   font-family: Intro-Book, sans-serif;
   color: white;
 
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+
   &__accented {
     color: $color-yellow-pale;
   }
@@ -150,6 +200,8 @@ body {
 
 .paymodal-input {
   border: 1px solid $color-border-input;
+  width: 100%;
+  max-width: 340px;
   height: $input-height;
   padding: 0 18px;
   font-family: Intro-Book, sans-serif;
@@ -157,11 +209,21 @@ body {
   color: white;
   background: $color-bg-input;
 
+  @media screen and (max-width: 600px) {
+    height: $input-height-2;
+    padding: 0 $input-pad;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 0 $input-pad-2;
+  }
+
   @include placeholder {
     color: $color-placeholder-input;
   }
 
   &--low {
+    max-width: none;
     height: 40px;
   }
 }
@@ -265,22 +327,35 @@ body {
 }
 
 .horizontal-input-block {
+  $break: 500px;
+
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  margin-top: -20px;
+  margin-left: -20px;
+
+  @media screen and (max-width: $break) {
+    margin-top: -12px;
+  }
 
   &--stretch {
     align-items: stretch;
   }
 
   &__el {
-    &:not(:first-child) {
-      margin-left: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+
+    @media screen and (max-width: $break) {
+      margin-top: 12px;
     }
   }
 }
 
 .input-with-button {
   position: relative;
+  flex-grow: 1;
 
   &__pad {
     padding-right: 100px;
@@ -307,6 +382,10 @@ body {
   &__block {
     &:not(:first-child) {
       margin-top: 30px;
+
+      @media screen and (max-width: 600px) {
+        margin-top: 20px;
+      }
     }
 
     &--pushed-off {
@@ -314,29 +393,57 @@ body {
     }
   }
 
-  &__columner {
-    //margin-top: 16px;
-  }
-
   &__method {
     height: 117px;
+
+    @media screen and (max-width: $break-payment-item) {
+      height: 110px;
+    }
+
+    @media screen and (max-width: $break-payment-item-2) {
+      height: 100px;
+    }
   }
 }
 
 .columner-paymethods {
   $margin-v: 14px;
-  $margin-h: 17px;
+  $margin-h: 16px;
+  $margin-v-2: 10px;
+  $margin-h-2: 12px;
 
   display: flex;
   flex-wrap: wrap;
   margin-left: -$margin-h;
   margin-top: -$margin-v;
 
+  @media screen and (max-width: $break-payment-item) {
+    margin-left: -$margin-h-2;
+    margin-top: -$margin-v-2;
+  }
+
   &__item {
-    //@include width_col(5, $margin-h);
     width: 92px;
     margin-left: $margin-h;
     margin-top: $margin-v;
+
+    @media screen and (max-width: $break-payment-item) {
+      @include width_col(5, $margin-h-2 / 2);
+      margin-left: $margin-h-2;
+      margin-top: $margin-v-2;
+    }
+
+    @media screen and (max-width: $break-payment-item-2) {
+      @include width_col(4, $margin-h-2 / 2);
+    }
+
+    @media screen and (max-width: $break-payment-item-3) {
+      @include width_col(3, $margin-h-2 / 2);
+    }
+
+    @media screen and (max-width: $break-payment-item-4) {
+      @include width_col(2, $margin-h-2 / 2);
+    }
   }
 }
 
@@ -393,6 +500,10 @@ body {
     background: $color-bg-3;
     overflow: hidden;
 
+    @media screen and (max-width: $break-payment-item) {
+      padding: 16%;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -409,6 +520,7 @@ body {
 
   &__ok {
     position: absolute;
+    z-index: -1;
     top: 60%;
     left: 30%;
     opacity: 0;
@@ -418,6 +530,7 @@ body {
 
   &__currency-img {
     max-width: 100%;
+    max-height: 100%;
     margin: auto;
   }
 }
@@ -426,12 +539,26 @@ body {
   max-width: 400px;
   background: $color-bg-3 url("/img/payment-modal-bg.png") center;
 
+  @media screen and (max-width: $break-faq) {
+    max-width: none;
+  }
+
   &__logo {
     display: block;
     max-width: 150px;
     padding-right: 36px;
     box-sizing: content-box;
     margin: 0 auto 30px;
+
+    @media screen and (max-width: 600px) {
+      max-width: 120px;
+      padding-right: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-bottom: 12px;
+    }
   }
 
   &__title {
@@ -444,6 +571,14 @@ body {
     font-family: Intro-Book, sans-serif;
     line-height: 1.4;
     color: white;
+
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 16px;
+    }
   }
 
   &__accented {
@@ -455,9 +590,18 @@ body {
     margin-bottom: 20px;
     font-size: 24px;
     color: $color-yellow-pale;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
   }
 
   &__paragraph {
+    &--first {
+      text-align: center;
+    }
+
     &--marked {
       position: relative;
       padding-left: 20px;
@@ -471,6 +615,16 @@ body {
         height: 5px;
         border: 2px solid $color-yellow-pale;
         transform: translateY(-50%) rotate(45deg);
+
+        @media screen and (max-width: 600px) {
+          top: 12px;
+        }
+
+        @media screen and (max-width: 500px) {
+          top: 10px;
+          width: 4px;
+          height: 4px;
+        }
       }
     }
   }
@@ -478,11 +632,22 @@ body {
   &__bottom {
     margin-top: 40px;
     text-align: center;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 30px;
+    }
   }
 }
 
 .paymodal-qr {
   display: flex;
+  align-items: flex-start;
+
+  $break-column: 360px;
+
+  @media screen and (max-width: $break-column) {
+    flex-direction: column;
+  }
 
   &__img {
     max-width: 124px;
@@ -492,10 +657,20 @@ body {
     margin-left: 40px;
     font-family: Intro-Book, sans-serif;
     line-height: 1;
+
+    @media screen and (max-width: 600px) {
+      margin-left: 20px;
+    }
+
+    @media screen and (max-width: $break-column) {
+      margin-left: 0;
+      margin-top: 20px;
+    }
   }
 
   &__price {
     font-size: 20px;
+    line-height: 1.1;
     color: white;
   }
 

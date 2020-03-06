@@ -1,13 +1,16 @@
+.paymodal-select-block {
+  flex-grow: 1;
+  max-width: 340px;
+}
+
 .paymodal-select {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 220px;
   height: $input-height;
   border: 1px solid $color-border-input;
-  //border-radius: $border-radius;
-  padding: 0 20px;
+  padding: 0 50px 0 20px;
   box-sizing: border-box;
   font-family: Intro-Book, sans-serif;
   color: white;
@@ -16,22 +19,37 @@
   cursor: pointer;
   outline: none;
 
+  @media screen and (max-width: 600px) {
+    height: $input-height-2;
+    padding-right: 40px;
+    padding-left: $input-pad;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding-right: 30px;
+    padding-left: $input-pad-2;
+  }
+
   &.nice-select {
     &::after {
-      //content: '';
-      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M6.9 6.7L11.7 2C12.8.9 11.1-.8 10 .3L6 4.1 2.1.4C1-.7-.8.9.4 2l4.8 4.6c.4.5 1.2.5 1.7.1z' fill='%23fff'/%3E%3C/svg%3E");
-      //border: 5px solid transparent;
-      //border-bottom-width: 0;
-      //border-top-color: white;
+      content: '';
       position: absolute;
-      top: calc(50% - 10px);
+      top: 50%;
       right: 20px;
       transform: translateY(-50%);
-      transform-origin: center 130%;
+      transform-origin: center 25%;
       width: 12px;
       height: 7px;
-      //background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M6.9 6.7L11.7 2C12.8.9 11.1-.8 10 .3L6 4.1 2.1.4C1-.7-.8.9.4 2l4.8 4.6c.4.5 1.2.5 1.7.1z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 20px top 50%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M6.9 6.7L11.7 2C12.8.9 11.1-.8 10 .3L6 4.1 2.1.4C1-.7-.8.9.4 2l4.8 4.6c.4.5 1.2.5 1.7.1z' fill='%23fff'/%3E%3C/svg%3E") no-repeat;
       transition: transform .2s;
+
+      @media screen and (max-width: 600px) {
+        right: 12px;
+      }
+
+      @media screen and (max-width: 500px) {
+        right: 10px;
+      }
     }
 
     .list {
@@ -41,8 +59,6 @@
       right: -1px;
       border: 1px solid $color-border-input;
       border-top: none;
-      //border-radius: $border-radius-apex
-      //border-radius: 0 0 $border-radius $border-radius;
       box-sizing: border-box;
       background-color: $color-bg-input;
       opacity: 0;
@@ -59,6 +75,15 @@
       padding: 0 20px;
       color: white;
       cursor: pointer;
+
+      @media screen and (max-width: 600px) {
+        height: $input-height-2;
+        padding-left: $input-pad;
+      }
+
+      @media screen and (max-width: 500px) {
+        padding-left: $input-pad-2;
+      }
 
       &:hover {
         background-color: #231f1e;
@@ -119,7 +144,7 @@ select.paymodal-select {
   font-size: inherit;
   font-family: inherit;
   font-weight: inherit;
-  background: $color-border-input url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='5'%3E%3Cpath fill='%23fff' d='M0, 0H10L5, 5z'/%3E%3C/svg%3E") no-repeat right 12px top 50%;
+  background: $color-border-input url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M6.9 6.7L11.7 2C12.8.9 11.1-.8 10 .3L6 4.1 2.1.4C1-.7-.8.9.4 2l4.8 4.6c.4.5 1.2.5 1.7.1z' fill='%23fff'/%3E%3C/svg%3E") no-repeat right 12px top 50%;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
