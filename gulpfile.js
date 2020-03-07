@@ -26,7 +26,7 @@ function reloadTask(done) {
 }
 
 function jsTask(done) {
-    src('src/js/script.js')
+    src('src/js/*.js')
         .pipe(dest('build/js'))
         .pipe(connect.reload());
     done();
