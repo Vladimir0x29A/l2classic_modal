@@ -230,14 +230,19 @@ body {
 
 .paymodal-simple-button {
   position: relative;
-  padding: 12px 20px;
+  padding: 0 20px;
   min-width: 100px;
+  height: $input-height;
   font-size: 18px;
   line-height: 1;
   font-family: Intro-Book, sans-serif;
   color: white;
   background: $color-yellow-pale;
   cursor: pointer;
+
+  @media screen and (max-width: 600px) {
+    height: $input-height-2;
+  }
 
   &__span {
     position: relative;
@@ -282,7 +287,7 @@ body {
 
     .paymodal-bordered-button {
       &__span {
-        filter: saturate(1.7);
+        filter: saturate(2) hue-rotate(-20deg);
       }
     }
   }
@@ -363,9 +368,9 @@ body {
 
   &__abs {
     position: absolute;
-    top: 50%;
+    top: 4px;
+    bottom: 4px;
     right: 4px;
-    transform: translateY(-50%);
   }
 }
 

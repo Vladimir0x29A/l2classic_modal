@@ -105,9 +105,9 @@
                     <div class="paymodal-label">Choose one method</div>
                     <div class="horizontal-input-block">
                         <div class="horizontal-input-block__el paymodal-select-block">
-                            <select class="nice-select paymodal-select" name="paymethod">
-                                <option value="paymethod_oplatainfo">Oplata.info</option>
-                                <option value="paymethod_nextpay">NextPay</option>
+                            <select class="paymodal-select" name="paymethod">
+                                <option data-name="paymodal-select__oplatainfo" value="oplatainfo">Oplata.info</option>
+                                <option data-name="paymodal-select__nextpay" value="nextpay">NextPay</option>
                             </select>
                         </div>
                         <span class="horizontal-input-block__el paymodal-info">
@@ -163,12 +163,13 @@
                 <div class="paymodal-faq__bottom">注意！请确保您发送的金额正确。如有任何问题，请联系支持。二维码的有效时间为2分钟，超过2分钟就会失效。</div>
             </div>
         </div>
+
         <div class="paymodal__close paymodal-close"></div>
     </div>
 </div>
 
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/jquery.nice-select.min.js"></script>
+<script src="/js/jquery.nice-select.js"></script>
 <script src="/js/script.js"></script>
 </body>
 </html>

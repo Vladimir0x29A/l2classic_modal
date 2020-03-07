@@ -67,7 +67,9 @@
       var $options = $select.find('option');
       var $selected = $select.find('option:selected');
 
-      $dropdown.find('.current').html($selected.data('display') || $selected.text());
+      $dropdown.find('.current')
+        .addClass($selected.data('name'))
+        .html($selected.data('display') || $selected.text());
 
       $options.each(function (i) {
         var $option = $(this);
@@ -79,6 +81,8 @@
           .addClass('option' +
             ($option.is(':selected') ? ' selected' : '') +
             ($option.is(':disabled') ? ' disabled' : ''))
+          .attr('data-name', $option.attr('data-name'))
+          .addClass($option.attr('data-name'))
           .html($option.text())
         );
       });
@@ -121,7 +125,11 @@
       $option.addClass('selected');
 
       var text = $option.data('display') || $option.text();
-      $dropdown.find('.current').text(text);
+      $dropdown.find('.current')
+        .removeAttr('class')
+        .addClass('current')
+        .addClass($option.data('name'))
+        .text(text);
 
       $dropdown.prev('select').val($option.data('value')).trigger('change');
     });

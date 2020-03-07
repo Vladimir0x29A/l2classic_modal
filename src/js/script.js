@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('.nice-select').niceSelect();
+  $('.paymodal-select').niceSelect();
 
 
 

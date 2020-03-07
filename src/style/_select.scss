@@ -4,13 +4,21 @@
 }
 
 .paymodal-select {
+  $pad: 20px;
+  $pad-1: 30px;
+  $pad-2: 20px;
+  $pad-3: 10px;
+
+  $break-1: 600px;
+  $break-2: 500px;
+
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: $input-height;
   border: 1px solid $color-border-input;
-  padding: 0 50px 0 20px;
+  padding: 0 ($pad + $pad-1) 0 $pad;
   box-sizing: border-box;
   font-family: Intro-Book, sans-serif;
   color: white;
@@ -19,15 +27,69 @@
   cursor: pointer;
   outline: none;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $break-1) {
     height: $input-height-2;
-    padding-right: 40px;
+    padding-right: $pad + $pad-2;
     padding-left: $input-pad;
   }
 
-  @media screen and (max-width: 500px) {
-    padding-right: 30px;
+  @media screen and (max-width: $break-2) {
+    padding-right: $pad + $pad-3;
     padding-left: $input-pad-2;
+  }
+
+  &__oplatainfo,
+  &__nextpay {
+    position: relative;
+    padding-left: $pad-1 !important;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 22px;
+      height: 100%;
+      background: no-repeat center;
+      background-size: contain;
+    }
+
+    &.option {
+      padding-left: $pad + $pad-1 !important;
+
+      @media screen and (max-width: $break-1) {
+        padding-left: $input-pad + $pad-1 !important;
+      }
+
+      @media screen and (max-width: $break-2) {
+        padding-left: $input-pad-2 + $pad-1 !important;
+      }
+
+      &::before {
+        left: $pad;
+
+        @media screen and (max-width: $break-1) {
+          left: $input-pad;
+        }
+
+        @media screen and (max-width: $break-2) {
+          left: $input-pad-2;
+        }
+      }
+    }
+  }
+
+  &__nextpay {
+    &::before {
+      background-image: url("/img/paymodal-logoluna.png");
+    }
+  }
+
+  &__oplatainfo {
+    &::before {
+      background-image: url("/img/paymodal-bag.png");
+    }
   }
 
   &.nice-select {
@@ -35,7 +97,7 @@
       content: '';
       position: absolute;
       top: 50%;
-      right: 20px;
+      right: $pad;
       transform: translateY(-50%);
       transform-origin: center 25%;
       width: 12px;
@@ -43,11 +105,11 @@
       background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M6.9 6.7L11.7 2C12.8.9 11.1-.8 10 .3L6 4.1 2.1.4C1-.7-.8.9.4 2l4.8 4.6c.4.5 1.2.5 1.7.1z' fill='%23fff'/%3E%3C/svg%3E") no-repeat;
       transition: transform .2s;
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: $break-1) {
         right: 12px;
       }
 
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: $break-2) {
         right: 10px;
       }
     }
@@ -72,16 +134,16 @@
       display: flex;
       align-items: center;
       height: $input-height;
-      padding: 0 20px;
+      padding: 0 $pad;
       color: white;
       cursor: pointer;
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: $break-1) {
         height: $input-height-2;
         padding-left: $input-pad;
       }
 
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: $break-2) {
         padding-left: $input-pad-2;
       }
 
@@ -92,42 +154,10 @@
       &.selected {
         display: none;
       }
-
-      /*&[data-value='paymethod_nextpay'],
-      &[data-value='paymethod_oplatainfo'] {
-        position: relative;
-        padding-left: 50px;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 20px;
-          width: 22px;
-          height: 100%;
-          background: no-repeat center;
-          background-size: contain;
-        }
-      }
-
-      &[data-value='paymethod_nextpay'] {
-        &::before {
-          background-image: url("/img/paymodal-logoluna.png");
-        }
-      }
-
-      &[data-value='paymethod_oplatainfo'] {
-        &::before {
-          background-image: url("/img/paymodal-bag.png");
-        }
-      }*/
     }
   }
 
   &.open {
-    //border-radius: $border-radius $border-radius 0 0;
-
     &::after {
       transform: rotate(180deg);
     }
@@ -140,7 +170,7 @@
   }
 }
 
-select.paymodal-select {
+/*select.paymodal-select {
   font-size: inherit;
   font-family: inherit;
   font-weight: inherit;
@@ -152,4 +182,4 @@ select.paymodal-select {
   &::-ms-expand {
     display: none;
   }
-}
+}*/
