@@ -7,6 +7,7 @@ $color-bg-2: #211e1e;
 $color-bg-3: #1c1919;
 $color-form-border: #aa8a55;
 $color-yellow-pale: #d0ab6f;
+$color-error: #e62e2e;
 
 $color-border-input: #453822;
 $color-bg-input: #191514;
@@ -118,8 +119,8 @@ body {
     }
   }
 
-  &__faq {
-
+  &__error {
+    margin-top: 6px;
   }
 
   &__close {
@@ -182,6 +183,12 @@ body {
       margin-bottom: 12px;
     }
   }
+}
+
+.paymodal-error {
+  font-size: 14px;
+  font-family: Intro-Book, sans-serif;
+  color: $color-error;
 }
 
 .paymodal-info {
