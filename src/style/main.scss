@@ -177,10 +177,12 @@ body {
   }
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    &:not(.paymodal-label--no-margin) {
+      margin-bottom: 16px;
 
-    @media screen and (max-width: 600px) {
-      margin-bottom: 12px;
+      @media screen and (max-width: 600px) {
+        margin-bottom: 12px;
+      }
     }
   }
 }
@@ -246,6 +248,7 @@ body {
   color: white;
   background: $color-yellow-pale;
   cursor: pointer;
+  user-select: none;
 
   @media screen and (max-width: 600px) {
     height: $input-height-2;
@@ -277,6 +280,7 @@ body {
   font-family: Intro-Book, sans-serif;
   color: $color-yellow-pale;
   cursor: pointer;
+  user-select: none;
 
   &__span {
     position: relative;
@@ -314,6 +318,7 @@ body {
   text-shadow: 0 2px 2px cca(black, .5);
   background: url(/img/btn-s.png) bottom no-repeat;
   cursor: pointer;
+  user-select: none;
 
   &::before {
     @extend %pseudo-hover;
@@ -464,6 +469,7 @@ body {
   padding: 2px;
   background: linear-gradient(131deg, #332b29, #241f1e);
   cursor: pointer;
+  user-select: none;
 
   &::before,
   &::after {
@@ -565,17 +571,20 @@ body {
     @media screen and (max-width: 600px) {
       max-width: 120px;
       padding-right: 20px;
-      margin-bottom: 20px;
-    }
-
-    @media screen and (max-width: 500px) {
-      margin-bottom: 12px;
     }
   }
 
   &__title {
     font-size: 24px;
     text-align: center;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 20px;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-top: 12px;
+    }
   }
 
   &__content {
@@ -649,6 +658,18 @@ body {
       margin-top: 30px;
     }
   }
+
+  &__bonus {
+    $offset: 34px;
+    margin-bottom: 15px;
+    margin-left: $offset;
+    margin-right: $offset;
+
+    @media screen and (max-width: $break-faq) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
 }
 
 .paymodal-qr {
@@ -663,6 +684,7 @@ body {
 
   &__img {
     max-width: 124px;
+    user-select: none;
   }
 
   &__info {
@@ -690,5 +712,36 @@ body {
     margin-top: 16px;
     font-size: 30px;
     color: $color-yellow-pale;
+  }
+}
+
+.paymodal-bonus {
+  border: 17px solid transparent;
+  border-image: url('/img/payment-border.png') 17 round;
+  padding: 14px;
+  text-align: center;
+  line-height: 1;
+
+  @media screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 7px;
+
+    @media screen and (max-width: 500px) {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__info {
+    font-family: Intro-Book, sans-serif;
+    font-size: 18px;
+    color: white;
   }
 }
