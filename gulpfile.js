@@ -44,6 +44,7 @@ function cssTask() {
     .pipe(sourceMaps.write())
     .pipe(rename('main.css'))
     // .pipe(gcmq())
+    // .pipe(stripComments.text())
     .pipe(dest('build'))
     // .pipe(dest('style-source/css'));
     .pipe(connect.reload());
